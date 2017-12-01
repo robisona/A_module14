@@ -103,10 +103,7 @@ model2 <- jags.model(textConnection(model_string),
 
 
 # Update model with burn-in iterations (40000)
-update(model2, 10000)
-
-#### Here, should we change the number of iterations? there are 10000 and we said 40000. 
-#### Otherwise, the gelman plots woulb be different  
+update(model2, 40000)
 
 
 # Sample the posterior and add thinning
@@ -133,11 +130,10 @@ gelman.plot(samp2)
 # To reduce autocorrelation, we added a thinning section when running model2. With a thinning value of 80, therefore keeping 1 
 # out of every 80 iterations, we were able to sufficiently reduce autocorrelation for all beta values in each chain of model2. 
 # Since we thinned, however, we increased our total number of iterations from 20000 in our original model to 800000 in model2. 
-# Though our total number of iterations decreased from 20000 in our original model to only 10000 (a.k.a. 800000/80) in model2, 
-# all model diagnostics proved our model as adequate. 
+# Since we increased our total number of iterations, we also increased our burn-in iterations from 10000 to 40000. Though our 
+# total number of iterations decreased from 20000 in our original model to only 10000 (a.k.a. 800000/80) in model2, all model 
+# diagnostics proved our model as adequate. 
 
-#### I would include here the number of iterations (40000) that we use to burn-in the model. 
-#### that has an effect on the gelman plots. The 97% string and the median value string keep close to 1 through the axis x
 
 
 ########################################################################################################################
