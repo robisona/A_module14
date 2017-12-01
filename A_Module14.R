@@ -3,7 +3,7 @@
 ## Andrew Robison, Connor Breton, Korik Moreno
 
 
-## The data for this week include mean February temperature (in °C, Feb_temp), mean snowfall (in cm, Feb_snow) 
+## The data for this week include mean February temperature (in Â°C, Feb_temp), mean snowfall (in cm, Feb_snow) 
 ## and the day of year that plants leaf out (in days, leaf_DOY) around Durham, NH.  The goal of this analysis
 ## is to determine whether high February temperature and low February snowfall accelerate leaf out.  Remember
 ## that leaf out is a day of year, so lower values indicate earlier leaf out.
@@ -105,6 +105,9 @@ model2 <- jags.model(textConnection(model_string),
 # Update model with burn-in iterations (40000)
 update(model2, 10000)
 
+#### Here, should we change the number of iterations? there are 10000 and we said 40000. 
+#### Otherwise, the gelman plots woulb be different  
+
 
 # Sample the posterior and add thinning
 samp2 <- coda.samples(model2, variable.names = c("beta"), n.iter = 800000, thin = 80)
@@ -133,6 +136,8 @@ gelman.plot(samp2)
 # Though our total number of iterations decreased from 20000 in our original model to only 10000 (a.k.a. 800000/80) in model2, 
 # all model diagnostics proved our model as adequate. 
 
+#### I would include here the number of iterations (40000) that we use to burn-in the model. 
+#### that has an effect on the gelman plots. The 97% string and the median value string keep close to 1 through the axis x
 
 
 ########################################################################################################################
