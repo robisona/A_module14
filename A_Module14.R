@@ -119,7 +119,7 @@ plot(samp2)
 # Plot autocorrelation
 autocorr.plot(samp2)
 # All three "betas" for each chain look fine since autocorrelation rapidly decreases from one to zero and stays that way. 
-# Thinning was a great success here since and really helped reduce the autocorrelation seen in beta[1] and beta[3].
+# Thinning was a great success here and really helped reduce the autocorrelation seen in beta[1] and beta[3].
 
 
 # Gelman-Brooks-Rubin plot
